@@ -1,0 +1,26 @@
+{
+  "name": "himiklab/yii2-search-component-v2",
+  "description": "Yii2 Zend Lucene search component v2",
+  "keywords": ["yii2", "search", "lucene"],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "support": {
+    "source": "https://github.com/himiklab/yii2-search-component-v2",
+    "issues": "https://github.com/himiklab/yii2-search-component-v2/issues"
+  },
+  "authors": [
+    {
+      "name": "HimikLab",
+      "homepage": "https://github.com/himiklab/"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+    "zendframework/zendsearch": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "himiklab\\search\\": ""
+    }
+  }
+}
