@@ -1,6 +1,6 @@
 Yii2 Zend Lucene Search Component V2
 ====================================
-Zend Lucene search component v2 for Yii2.
+Zend Lucene `advanced` search component for Yii2.
 
 Installation
 ------------
@@ -25,8 +25,10 @@ to the require section of your application's `composer.json` file.
 ```php
 'components' => [
     'search' => [
-        'class' => 'himiklab\search\Search',
-        'models' => ['app\modules\page\models\Page'],
+        'class' => 'himiklab\yii2\search\Search',
+        'models' => [
+            'app\modules\page\models\Page',
+        ],
     ],
     // ...
 ],
@@ -35,7 +37,7 @@ to the require section of your application's `composer.json` file.
 * Add behavior in the AR models, for example:
 
 ```php
-use himiklab\sitemap\behaviors\SitemapBehavior;
+use himiklab\yii2\search\behaviors\SearchBehavior;
 
 public function behaviors()
 {
@@ -53,7 +55,7 @@ public function behaviors()
                     ['name' => 'title', 'value' => $model->title],
                     ['name' => 'body', 'value' => strip_tags($model->body)],
                     ['name' => 'url', 'value' => $model->url, 'type' => SearchBehavior::FIELD_KEYWORD],
-                    ['name' => 'model', 'value' => 'page', 'type' => SearchBehavior::FIELD_UNSTORED],
+                    // ['name' => 'model', 'value' => 'page', 'type' => SearchBehavior::FIELD_UNSTORED],
                 ];
             }
         ],

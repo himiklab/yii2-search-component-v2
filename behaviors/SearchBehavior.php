@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/MIT MIT
  */
 
-namespace himiklab\search\behaviors;
+namespace himiklab\yii2\search\behaviors;
 
 use yii\base\Behavior;
 use yii\base\InvalidConfigException;
@@ -37,7 +37,7 @@ use yii\base\InvalidConfigException;
  * ```
  *
  * @author HimikLab
- * @package himiklab\search\behaviors
+ * @package himiklab\yii2\search\behaviors
  */
 class SearchBehavior extends Behavior
 {
@@ -62,10 +62,10 @@ class SearchBehavior extends Behavior
     the data, use an UnStored field. */
     const FIELD_UNSTORED = 'unStored';
 
-    /** @var callable $searchFields */
+    /** @var callable */
     public $searchFields;
 
-    /** @var callable $searchScope */
+    /** @var callable */
     public $searchScope;
 
     public function init()

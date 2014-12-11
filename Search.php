@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/MIT MIT
  */
 
-namespace himiklab\search;
+namespace himiklab\yii2\search;
 
 use Yii;
 use yii\base\Component;
@@ -27,26 +27,26 @@ use ZendSearch\Lucene\Search\Query\Wildcard;
  *
  * @see http://framework.zend.com/manual/1.12/en/zend.search.lucene.html
  * @author HimikLab
- * @package himiklab\search
+ * @package himiklab\yii2\search
  */
 class Search extends Component
 {
-    /** @var array $models */
+    /** @var array */
     public $models = [];
 
-    /** @var string $indexDirectory alias or directory path */
+    /** @var string alias or directory path */
     public $indexDirectory = '@app/runtime/search';
 
-    /** @var bool $caseSensitivity */
+    /** @var bool */
     public $caseSensitivity = false;
 
-    /** @var int $minPrefixLength Minimum term prefix length (number of minimum non-wildcard characters) */
+    /** @var int Minimum term prefix length (number of minimum non-wildcard characters) */
     public $minPrefixLength = 3;
 
-    /** @var int $resultsLimit 0 means no limit */
+    /** @var int 0 means no limit */
     public $resultsLimit = 0;
 
-    /** @var \ZendSearch\Lucene\Index $luceneIndex */
+    /** @var \ZendSearch\Lucene\Index */
     protected $luceneIndex;
 
     public function __destruct()
