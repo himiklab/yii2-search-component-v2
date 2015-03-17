@@ -18,9 +18,10 @@ use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Document\Field;
 use ZendSearch\Lucene\Index\Term as IndexTerm;
 use ZendSearch\Lucene\Lucene;
-use ZendSearch\Lucene\Search\Query\Term;
 use ZendSearch\Lucene\Search\Query\MultiTerm;
+use ZendSearch\Lucene\Search\Query\Term;
 use ZendSearch\Lucene\Search\Query\Wildcard;
+use ZendSearch\Lucene\Search\QueryParser;
 
 /**
  * Yii2 Zend Lucine search component v2.
@@ -56,6 +57,7 @@ class Search extends Component
 
     public function init()
     {
+        QueryParser::setDefaultEncoding('UTF-8');
         if ($this->caseSensitivity) {
             Analyzer::setDefault(new Utf8());
         } else {
