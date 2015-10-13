@@ -6,15 +6,11 @@ Installation
 ------------
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-* Either run
-
-```
-php composer.phar require --prefer-dist "himiklab/yii2-search-component-v2" "*"
-```
-
-or add
+* Add
 
 ```json
+"zendframework/zendsearch": "2.0.0rc5",
+"zendframework/zend-stdlib": "2.6.0 as 2.0.0rc5",
 "himiklab/yii2-search-component-v2" : "*"
 ```
 

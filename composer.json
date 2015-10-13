@@ -15,9 +15,7 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "*",
-    "zendframework/zendsearch": "2.0.0rc5",
-    "zendframework/zend-stdlib": "2.6.0 as 2.0.0rc5"
+    "yiisoft/yii2": "*"
   },
   "autoload": {
     "psr-4": {
