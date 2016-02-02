@@ -186,10 +186,13 @@ class Search extends Component
     {
         $document = new Document();
         foreach ($fields as $field) {
-            if (!isset($field['type'])) {
-                $field['type'] = behaviors\SearchBehavior::FIELD_TEXT;
+            if (isset($field['type'])) {
+                $currentType = $field['type'];
+            } else {
+                $currentType = behaviors\SearchBehavior::FIELD_TEXT;
             }
-            $document->addField(Field::$field['type'](
+
+            $document->addField(Field::$currentType(
                 $field['name'],
                 $field['value']
             ));
