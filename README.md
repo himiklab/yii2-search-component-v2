@@ -9,8 +9,6 @@ The preferred way to install this extension is through [composer](http://getcomp
 * Add
 
 ```json
-"zendframework/zendsearch": "2.0.0rc5",
-"zendframework/zend-stdlib": "2.6.0 as 2.0.0rc5",
 "himiklab/yii2-search-component-v2" : "*"
 ```
 
