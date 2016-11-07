@@ -13,7 +13,9 @@ use yii\base\InvalidConfigException;
 use yii\helpers\FileHelper;
 use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8;
+use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8\CaseInsensitive;
+use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as CaseInsensitiveNum;
 use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Document\Field;
 use ZendSearch\Lucene\Index\Term as IndexTerm;
@@ -38,7 +40,7 @@ class Search extends Component
     /** @var string alias or directory path */
     public $indexDirectory = '@app/runtime/search';
 
-    /** @var bool */
+    /** @var boolean */
     public $caseSensitivity = false;
 
     /** @var int Minimum term prefix length (number of minimum non-wildcard characters) */
@@ -46,6 +48,9 @@ class Search extends Component
 
     /** @var int 0 means no limit */
     public $resultsLimit = 0;
+
+    /** @var boolean */
+    public $parseNumeric = false;
 
     /** @var \ZendSearch\Lucene\Index */
     protected $luceneIndex;
@@ -59,9 +64,9 @@ class Search extends Component
     {
         QueryParser::setDefaultEncoding('UTF-8');
         if ($this->caseSensitivity) {
-            Analyzer::setDefault(new Utf8());
+            Analyzer::setDefault($this->parseNumeric ? new Utf8Num() : new Utf8());
         } else {
-            Analyzer::setDefault(new CaseInsensitive());
+            Analyzer::setDefault($this->parseNumeric ? new CaseInsensitiveNum() : new CaseInsensitive());
         }
 
         $this->indexDirectory = FileHelper::normalizePath(Yii::getAlias($this->indexDirectory));
