@@ -51,6 +51,9 @@ class Search extends Component
 
     /** @var boolean */
     public $parseNumeric = false;
+    
+    /** @var boolean Search by part of word */
+    public $partWord = false;
 
     /** @var \ZendSearch\Lucene\Index */
     protected $luceneIndex;
@@ -114,6 +117,9 @@ class Search extends Component
         Lucene::setResultSetLimit($this->resultsLimit);
 
         if (empty($fields)) {
+            if($this->partWord) {
+                $term .= '*';
+            }
             return [
                 'results' => $this->luceneIndex->find($term),
                 'query' => $term
