@@ -22,6 +22,6 @@ class SearchAssets extends AssetBundle
     public function init()
     {
         parent::init();
-        $this->js[] = YII_DEBUG ? 'js/jquery.highlight-4.js' : 'js/jquery.highlight-4.closure.js';
+        $this->js[] = YII_DEBUG ? 'js/jquery.highlight-5.js' : 'js/jquery.highlight-5.closure.js';
     }
 }
