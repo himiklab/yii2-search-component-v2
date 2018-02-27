@@ -1,6 +1,8 @@
 Yii2 Zend Lucene Search Component V2
 ====================================
-Zend Lucene `advanced` search component for Yii2.
+Zend Lucene search component for Yii2.
+
+[![Packagist](https://img.shields.io/packagist/dt/himiklab/yii2-search-component-v2.svg)]() [![Packagist](https://img.shields.io/packagist/v/himiklab/yii2-search-component-v2.svg)]()  [![license](https://img.shields.io/badge/License-MIT-yellow.svg)]()
 
 Installation
 ------------
