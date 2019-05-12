@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "himiklab\\yii2\\search\\": ""
+      "himiklab\\yii2\\search\\": "src/"
     }
   }
 }

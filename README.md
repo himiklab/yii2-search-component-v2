@@ -62,7 +62,7 @@ public function behaviors()
 
 Usage
 -----
-See example `Search` module.
+See example `Search` module in `samples` directory.
 
 Resources
 ---------
