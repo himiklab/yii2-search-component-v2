@@ -52,7 +52,7 @@ public function behaviors()
                     ['name' => 'title', 'value' => $model->title],
                     ['name' => 'body', 'value' => strip_tags($model->body)],
                     ['name' => 'url', 'value' => $model->url, 'type' => SearchBehavior::FIELD_KEYWORD],
-                    // ['name' => 'model', 'value' => 'page', 'type' => SearchBehavior::FIELD_UNSTORED],
+                    ['name' => 'model', 'value' => 'page', 'type' => SearchBehavior::FIELD_UNSTORED],
                 ];
             }
         ],

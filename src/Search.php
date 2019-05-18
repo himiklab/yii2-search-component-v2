@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/himiklab/yii2-search-component-v2
- * @copyright Copyright (c) 2014-2017 HimikLab
+ * @copyright Copyright (c) 2014-2019 HimikLab
  * @license http://opensource.org/licenses/MIT MIT
  */
 
@@ -13,14 +13,14 @@ use yii\base\InvalidConfigException;
 use yii\helpers\FileHelper;
 use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8;
-use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8\CaseInsensitive;
+use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as CaseInsensitiveNum;
 use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Document\Field;
 use ZendSearch\Lucene\Index\Term as IndexTerm;
 use ZendSearch\Lucene\Lucene;
-use ZendSearch\Lucene\Search\Query\MultiTerm;
+use ZendSearch\Lucene\Search\Query\Boolean as QueryBoolean;
 use ZendSearch\Lucene\Search\Query\Term;
 use ZendSearch\Lucene\Search\Query\Wildcard;
 use ZendSearch\Lucene\Search\QueryParser;
@@ -28,7 +28,7 @@ use ZendSearch\Lucene\Search\QueryParser;
 /**
  * Yii2 Zend Lucine search component v2.
  *
- * @see http://framework.zend.com/manual/1.12/en/zend.search.lucene.html
+ * @see https://framework.zend.com/manual/1.12/en/zend.search.lucene.html
  * @author HimikLab
  * @package himiklab\yii2\search
  */
@@ -120,12 +120,13 @@ class Search extends Component
             ];
         }
 
-        $fieldTerms[] = new IndexTerm($term);
+        $query = new QueryBoolean();
+        $query->addSubquery(QueryParser::parse($term), true);
         foreach ($fields as $field => $fieldText) {
-            $fieldTerms[] = new IndexTerm($fieldText, $field);
+            $query->addSubquery(new Term(new IndexTerm($fieldText, $field)), true);
         }
         return [
-            'results' => $this->luceneIndex->find(new MultiTerm($fieldTerms)),
+            'results' => $this->luceneIndex->find($query),
             'query' => $term
         ];
     }
